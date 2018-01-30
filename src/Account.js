@@ -24,6 +24,22 @@ export default class Account extends Component {
        // empty out the text box in this component
        this.inputBox.value = '';
      }
+     // When the Withdraw button is clicked, you should deduct the amount entered in the text field to the balance. You should not be able to withdraw more than the current balance
+     // Define a click handler method within the Account class
+     handleWithdrawClick(e) {
+        // It is good practice to still prevent default behavior
+        e.preventDefault();
+        // set a local variable to the amount entered in the text box.
+        let amount = parseInt(this.inputBox.value);
+        // set a local variable to the new balance based off of the original balance + amount
+        let newBalance = this.state.balance + amount;
+        // set the balance to the newBalance using the setState method (necessary)
+        this.setState({
+          balance: newBalance
+        })
+        // empty out the text box in this component
+        this.inputBox.value = '';
+      }
   render() {
     return (
       // Use the property you set in App.js to add the name of the account to the <h2>
